@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"password/account"
-	"password/files"
 	"strconv"
 
 	"github.com/fatih/color"
@@ -99,10 +98,6 @@ Menu:
 		}
 
 	}
-	vault := account.GetVault()
-	files.ReadFile("somePath")
-	data, _ := vault.ToByte()
-	files.WriteFile("data.json", data)
 }
 
 // func main() {

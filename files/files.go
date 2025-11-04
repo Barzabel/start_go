@@ -6,16 +6,27 @@ import (
 	"github.com/fatih/color"
 )
 
-func ReadFile(path string) ([]byte, error) {
-	file, err := os.ReadFile(path)
+type JsonDB struct {
+	name string
+}
+
+func NewJsonDB(name string) *JsonDB {
+	res := JsonDB{
+		name: name,
+	}
+	return &res
+}
+
+func (db *JsonDB) Read() ([]byte, error) {
+	file, err := os.ReadFile(db.name)
 	if err != nil {
 		return nil, err
 	}
 	return file, nil
 }
 
-func WriteFile(name string, data []byte) {
-	file, err := os.Create(name)
+func (db *JsonDB) Write(data []byte) {
+	file, err := os.Create(db.name)
 	if err != nil {
 		color.Red(err.Error())
 		return

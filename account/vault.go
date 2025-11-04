@@ -26,7 +26,8 @@ func GetVault() *Vault {
 			UpdatedAt: time.Now(),
 			Accounts:  []Account{},
 		}
-		data, err := files.ReadFile("data.json")
+		db := files.NewJsonDB("data.json")
+		data, err := db.Read()
 		if err == nil {
 			json.Unmarshal(data, vault)
 		}
@@ -73,6 +74,7 @@ func (v *Vault) save() {
 	if err != nil {
 		color.Red("Не удалось преобразовать в json")
 	}
-	files.WriteFile("data.json", data)
+	db := files.NewJsonDB("data.json")
+	db.Write(data)
 
 }
