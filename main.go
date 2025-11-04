@@ -75,7 +75,7 @@ func showMenu() {
 	fmt.Println("1: создать аккаунт")
 	fmt.Println("2: удалить аккаунт")
 	fmt.Println("3: найти аккаунт")
-	fmt.Println("4: вызод")
+	fmt.Println("4: выход")
 }
 
 func main() {
